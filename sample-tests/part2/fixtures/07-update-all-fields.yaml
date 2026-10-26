@@ -1,0 +1,11 @@
+desired:
+  name: Loopback164
+  ipv4: 192.168.200.1/32
+  description: NEW-DESCRIPTION
+  admin_state: down
+
+current:
+  name: Loopback164
+  ipv4: 192.168.100.1/32
+  description: OLD-DESCRIPTION
+  admin_state: up

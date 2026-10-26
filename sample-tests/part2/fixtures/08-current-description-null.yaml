@@ -1,0 +1,11 @@
+desired:
+  name: Loopback164
+  ipv4: 10.9.9.1/32
+  description: IPA2026-67070164
+  admin_state: up
+
+current:
+  name: Loopback164
+  ipv4: 10.9.9.1/32
+  description: null
+  admin_state: up
