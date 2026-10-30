@@ -21,14 +21,17 @@ def _connect(router):
     )
 
 def _read(connection, interface_name):
-    ip_info = connection.send_command(
-        f"show ip interface {interface_name}",
-        use_textfsm=True
-    )
-    if isinstance(ip_info, str) and "Invalid input" in ip_info:
-        return [], []
     descriptions = connection.send_command(
         "show interfaces description",
+        use_textfsm=True
+    )
+    if not isinstance(descriptions, list):
+        raise ValueError("`show interfaces description` was not parsed by TextFSM")
+    exists = any(_expand_loopback(item["port"]) == interface_name for item in descriptions)
+    if not exists:
+        return [], descriptions
+    ip_info = connection.send_command(
+        f"show ip interface {interface_name}",
         use_textfsm=True
     )
     return ip_info, descriptions
