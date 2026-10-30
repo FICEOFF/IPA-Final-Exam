@@ -11,7 +11,7 @@ LOGGER = logging.getLogger(__name__)
 MAX_BODY_BYTES = 1_000_000
 
 def _json_text(response):
-    return json.dumps(response, separators=(",", ":"))
+    return json.dumps(response)
 
 class WebexEventHandler:
     def __init__(self, client, bot_person_id, processor=None):
